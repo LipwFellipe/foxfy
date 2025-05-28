@@ -1,18 +1,15 @@
 package com.example.foxfy.model;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import jakarta.persistence.OneToMany;
-import jakarta.persistence.CascadeType;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Set;
 
 @Entity
@@ -36,8 +33,49 @@ public class Albuns {
     @Column(name = "foto")
     private String foto;
 
-    @OneToMany(mappedBy = "album", cascade = CascadeType.ALL)
-    private Set<Musica> musicas;
+    @OneToMany(mappedBy = "album", cascade = CascadeType.ALL, orphanRemoval = true)
+    @JsonManagedReference
+    @JsonIgnore
+    private List<Musica> musicas = new ArrayList<>();
 
 
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getTituloAlbum() {
+        return tituloAlbum;
+    }
+
+    public void setTituloAlbum(String tituloAlbum) {
+        this.tituloAlbum = tituloAlbum;
+    }
+
+    public LocalDateTime getDataLancamento() {
+        return dataLancamento;
+    }
+
+    public void setDataLancamento(LocalDateTime dataLancamento) {
+        this.dataLancamento = dataLancamento;
+    }
+
+    public String getFoto() {
+        return foto;
+    }
+
+    public void setFoto(String foto) {
+        this.foto = foto;
+    }
+
+    public List<Musica> getMusicas() {
+        return musicas;
+    }
+
+    public void setMusicas(List<Musica> musicas) {
+        this.musicas = musicas;
+    }
 }

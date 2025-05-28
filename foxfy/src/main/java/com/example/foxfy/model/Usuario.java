@@ -1,15 +1,13 @@
 package com.example.foxfy.model;
 
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+
+import java.util.List;
 
 @Entity
 @Data
@@ -31,6 +29,10 @@ public class Usuario {
 
     @Column(name = "senha", nullable = false)
     private String senha;
+
+    @OneToMany(mappedBy = "usuario")
+    @JsonIgnore  // Evita recursão do outro lado
+    private List<Playlist> playlists;
 
     public String getEmail() {
         return email;

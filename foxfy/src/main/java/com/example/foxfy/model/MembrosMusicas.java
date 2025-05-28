@@ -35,5 +35,30 @@ public class MembrosMusicas {
     @ManyToOne
     @JoinColumn(name = "membro_id")
     private Membros membro;
+
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public Musica getMusica() {
+        return musica;
+    }
+
+    public void setMusica(Musica musica) {
+        this.musica = musica;
+    }
+
+    public Membros getMembro() {
+        return membro;
+    }
+
+    public void setMembro(Membros membro) {
+        this.membro = membro;
+    }
 }
 

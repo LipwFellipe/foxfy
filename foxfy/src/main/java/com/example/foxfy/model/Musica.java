@@ -1,5 +1,6 @@
 package com.example.foxfy.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -39,10 +40,67 @@ public class Musica {
 
     @ManyToOne
     @JoinColumn(name = "album_id")
+    @JsonBackReference
     private Albuns album;
 
     @ManyToOne
     @JoinColumn(name = "genero_id")
     private Genero genero;
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getTituloMusica() {
+        return tituloMusica;
+    }
+
+    public void setTituloMusica(String tituloMusica) {
+        this.tituloMusica = tituloMusica;
+    }
+
+    public int getDuracaoSegundos() {
+        return duracaoSegundos;
+    }
+
+    public void setDuracaoSegundos(int duracaoSegundos) {
+        this.duracaoSegundos = duracaoSegundos;
+    }
+
+    public String getAudio() {
+        return audio;
+    }
+
+    public void setAudio(String audio) {
+        this.audio = audio;
+    }
+
+    public Integer getNumeroFaixa() {
+        return numeroFaixa;
+    }
+
+    public void setNumeroFaixa(Integer numeroFaixa) {
+        this.numeroFaixa = numeroFaixa;
+    }
+
+    public Albuns getAlbum() {
+        return album;
+    }
+
+    public void setAlbum(Albuns album) {
+        this.album = album;
+    }
+
+    public Genero getGenero() {
+        return genero;
+    }
+
+    public void setGenero(Genero genero) {
+        this.genero = genero;
+    }
 }
 
