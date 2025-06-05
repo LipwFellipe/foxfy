@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 import java.util.Optional;
 
+@CrossOrigin(origins = "*")
 @RestController
 @RequestMapping("/usuarios")
 @AllArgsConstructor
@@ -51,7 +52,7 @@ public class UsuarioController {
     }
 
     @PostMapping("/login")
-    public ResponseEntity<String> login(@RequestBody LoginRequest loginRequest) {
+    public ResponseEntity<?> login(@RequestBody LoginRequest loginRequest) {
         Optional<Usuario> usuarioOptional = usuarioRepository.findByEmail(loginRequest.getEmail());
 
         if (usuarioOptional.isEmpty()) {
@@ -64,6 +65,10 @@ public class UsuarioController {
             return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Senha incorreta");
         }
 
-        return ResponseEntity.ok("Login bem-sucedido!");
+        // Remove dados sensíveis antes de retornar (opcional mas recomendado)
+        // usuario.setSenha(null);
+
+        return ResponseEntity.ok(usuario);
     }
 }
+
