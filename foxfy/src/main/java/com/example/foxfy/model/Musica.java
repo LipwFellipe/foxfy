@@ -35,8 +35,6 @@ public class Musica {
     @Column(name = "audio", nullable = false)
     private String audio;
 
-    @Column(name = "numero_faixa")
-    private Integer numeroFaixa;
 
     @ManyToOne
     @JoinColumn(name = "album_id")
@@ -77,14 +75,6 @@ public class Musica {
 
     public void setAudio(String audio) {
         this.audio = audio;
-    }
-
-    public Integer getNumeroFaixa() {
-        return numeroFaixa;
-    }
-
-    public void setNumeroFaixa(Integer numeroFaixa) {
-        this.numeroFaixa = numeroFaixa;
     }
 
     public Albuns getAlbum() {

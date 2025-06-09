@@ -40,6 +40,7 @@ public class UsuarioController {
                 .map(usuario -> {
                     usuario.setEmail(usuarioAtualizado.getEmail());
                     usuario.setSenha(usuarioAtualizado.getSenha());
+                    usuario.setFoto(usuarioAtualizado.getFoto());
                     return usuarioRepository.save(usuario);
                 })
                 .orElse(null);

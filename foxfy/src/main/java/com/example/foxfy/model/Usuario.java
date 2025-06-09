@@ -30,6 +30,9 @@ public class Usuario {
     @Column(name = "senha", nullable = false)
     private String senha;
 
+    @Column(name = "foto")
+    private String foto;
+
     @OneToMany(mappedBy = "usuario")
     @JsonIgnore  // Evita recursão do outro lado
     private List<Playlist> playlists;
@@ -48,5 +51,13 @@ public class Usuario {
 
     public void setSenha(String senha) {
         this.senha = senha;
+    }
+
+    public String getFoto() {
+        return foto;
+    }
+
+    public void setFoto(String foto) {
+        this.foto = foto;
     }
 }

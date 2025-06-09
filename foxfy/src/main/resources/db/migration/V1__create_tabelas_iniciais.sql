@@ -17,7 +17,6 @@ CREATE TABLE musica (
     titulo_musica VARCHAR(255) NOT NULL,
     duracao_segundos INT NOT NULL,
     audio VARCHAR(500) NOT NULL,
-    numero_faixa INT,
     album_id BIGINT,
     genero_id BIGINT,
     PRIMARY KEY (id),
@@ -30,6 +29,7 @@ CREATE TABLE usuario (
     nome VARCHAR(100) NOT NULL UNIQUE,
     email VARCHAR(255) NOT NULL UNIQUE,
     senha VARCHAR(255) NOT NULL,
+    foto VARCHAR(500),
     PRIMARY KEY (id)
 );
 

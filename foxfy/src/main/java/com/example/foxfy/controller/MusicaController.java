@@ -44,7 +44,6 @@ public class MusicaController {
         musica.setTituloMusica(musicaDTO.getTituloMusica());
         musica.setDuracaoSegundos(musicaDTO.getDuracaoSegundos());
         musica.setAudio(musicaDTO.getAudio());
-        musica.setNumeroFaixa(musicaDTO.getNumeroFaixa());
         musica.setAlbum(album);
         musica.setGenero(genero);
 
