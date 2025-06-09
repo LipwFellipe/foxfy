@@ -1,6 +1,6 @@
 package com.example.foxfy.model;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -38,7 +38,7 @@ public class Musica {
 
     @ManyToOne
     @JoinColumn(name = "album_id")
-    @JsonBackReference
+    @JsonIgnoreProperties("musicas")
     private Albuns album;
 
     @ManyToOne
